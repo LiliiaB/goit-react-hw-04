@@ -1,23 +1,20 @@
 import "./App.css";
-import { Profile } from "../Profile/Profile";
-import userData from "../userData.json";
-import { FriendList } from "../FriendList/FriendList";
-import friends from "../friends.json";
-import { TransactionHistory } from "../TransactionHistory/TransactionHistory";
-import transactions from "../transactionsHistory.json";
+import { LoadMoreBtn } from "../LoadMoreBtn/LoadMoreBtn";
+import { SearchBar } from "../SearchBar/SearchBar";
+import { ImageGallery } from "../ImageGallery/ImageGallery";
+import { Loader } from "../Loader/Loader";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
+import { ImageModal } from "../ImageModal/ImageModal";
 
 export default function App() {
   return (
     <>
-      <Profile
-        name={userData.username}
-        tag={userData.tag}
-        location={userData.location}
-        image={userData.avatar}
-        stats={userData.stats}
-      />
-      <FriendList friends={friends} />
-      <TransactionHistory items={transactions} />
+      <LoadMoreBtn />
+      <SearchBar />
+      <ImageGallery />
+      <Loader />
+      <ErrorMessage />
+      <ImageModal />
     </>
   );
 }
