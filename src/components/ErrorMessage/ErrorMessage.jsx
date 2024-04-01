@@ -1,9 +1,9 @@
 import css from "./ErrorMessage.module.css";
 
-export const ErrorMessage = () => {
+export const ErrorMessage = ({ error }) => {
   return (
     <div>
-      <h2>ErrorMessage</h2>
+      <p>Error: {error}</p>
     </div>
   );
 };
