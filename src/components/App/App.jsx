@@ -5,7 +5,7 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { Loader } from "../Loader/Loader";
-import { ImageModal } from "../ImageModal/ImageModal";
+import ImageModal from "../ImageModal/ImageModal";
 import { getPhotos } from "../../APIService/APIService";
 import { Toaster } from "react-hot-toast";
 
@@ -16,6 +16,8 @@ export default function App() {
   const [totalResults, setTotalResults] = useState(0);
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (!query) return;
@@ -39,15 +41,35 @@ export default function App() {
   function handleLoadMore() {
     setPage(page + 1);
   }
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
       {loading && <Loader />}
-      {error ? <ErrorMessage /> : <ImageGallery images={images} />}
+      {error ? (
+        <ErrorMessage />
+      ) : (
+        <ImageGallery images={images} onClick={handleImageClick} />
+      )}
       {totalResults > 0 && images.length < totalResults && (
         <LoadMoreBtn onClick={handleLoadMore} />
       )}
-      <ImageModal />
+
+      <ImageModal
+        images={selectedImage}
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+      />
+
       <Toaster />
     </>
   );

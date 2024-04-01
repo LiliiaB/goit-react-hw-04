@@ -8,7 +8,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .bar {
-  padding: 10px 20px;
+  padding: 10px;
 }
 .button {
   background-color: transparent;
@@ -25,11 +25,12 @@
   outline: none;
 }
 .input {
-  padding: 8px 12px;
+  padding: 8px;
   border-radius: 4px;
   margin-left: 8px;
   width: 400px;
   border: none;
+  line-height: 1.6;
 }
 .input:focus {
   outline: none;
