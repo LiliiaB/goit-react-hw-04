@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { LoadMoreBtn } from "../LoadMoreBtn/LoadMoreBtn";
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { SearchBar } from "../SearchBar/SearchBar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
 import { Loader } from "../Loader/Loader";
@@ -42,9 +43,9 @@ export default function App() {
     <>
       <SearchBar onSubmit={handleSubmit} />
       {loading && <Loader />}
-      <ImageGallery images={images} error={error} />
+      {error ? <ErrorMessage /> : <ImageGallery images={images} />}
       {totalResults > 0 && images.length < totalResults && (
-        <LoadMoreBtn onClick={handleLoadMore}>Load more</LoadMoreBtn>
+        <LoadMoreBtn onClick={handleLoadMore} />
       )}
       <ImageModal />
       <Toaster />
