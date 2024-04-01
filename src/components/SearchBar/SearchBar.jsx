@@ -1,5 +1,6 @@
 import css from "./SearchBar.module.css";
 import { useState } from "react";
+import { FiSearch } from "react-icons/fi";
 
 export const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
@@ -15,8 +16,12 @@ export const SearchBar = ({ onSubmit }) => {
   }
   return (
     <div>
-      <header>
-        <form onSubmit={handleSubmit}>
+      <header className={css.header}>
+        <form onSubmit={handleSubmit} className={css.bar}>
+          <button type="submit" className={css.button}>
+            <FiSearch size="16px" />
+          </button>
+
           <input
             type="text"
             autoComplete="off"
@@ -24,8 +29,8 @@ export const SearchBar = ({ onSubmit }) => {
             placeholder="Search images and photos"
             onChange={saveInput}
             value={query}
+            className={css.input}
           />
-          <button type="submit">Search</button>
         </form>
       </header>
     </div>
