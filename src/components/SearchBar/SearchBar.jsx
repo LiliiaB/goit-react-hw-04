@@ -1,6 +1,7 @@
 import css from "./SearchBar.module.css";
 import { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { toast } from "react-hot-toast";
 
 export const SearchBar = ({ onSubmit }) => {
   const [query, setQuery] = useState("");
@@ -11,6 +12,10 @@ export const SearchBar = ({ onSubmit }) => {
   }
   function handleSubmit(event) {
     event.preventDefault();
+    if (query.trim() === "") {
+      toast.error("Field can't be empty");
+      return;
+    }
     onSubmit(query);
     setQuery("");
   }
