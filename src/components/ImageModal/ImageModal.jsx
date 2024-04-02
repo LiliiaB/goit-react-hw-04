@@ -16,7 +16,7 @@ const customStyles = {
 
 Modal.setAppElement("#root");
 
-function ImageModal({ imageUrl, isOpen, onRequestClose }) {
+function ImageModal({ images, isOpen, onRequestClose }) {
   return (
     <Modal
       isOpen={isOpen}
@@ -24,7 +24,7 @@ function ImageModal({ imageUrl, isOpen, onRequestClose }) {
       contentLabel="Image Modal"
       style={customStyles}
     >
-      <img src={imageUrl} alt="Selected Image" />
+      <img src={images} alt="Selected Image" />
     </Modal>
   );
 }

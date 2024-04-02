@@ -6,7 +6,10 @@ export const ImageGallery = ({ images, onClick }) => {
     <ul className={css.list}>
       {images.map((image) => (
         <li key={image.id}>
-          <ImageCard image={image} onClick={() => onClick(image)} />
+          <ImageCard
+            image={image}
+            onClick={() => onClick(image.urls.regular)}
+          />
         </li>
       ))}
     </ul>
